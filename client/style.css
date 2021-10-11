@@ -1,0 +1,14 @@
+body {
+  background-color: blanchedalmond;
+  margin: 0 auto;
+  text-align: center;
+}
+
+h1 {
+  color: rgb(8, 97, 50);
+  font-size: 2em;
+  padding-top: 100px;
+  width: 100%;
+  font-family: Georgia;
+  text-align: center;
+}
