@@ -1,48 +1,55 @@
-const data = require("./data");
+const knex = require("./knex");
 
 module.exports = {
     Query: {
-        Characters: () => {
-            return data.harryPotter;
+        Characters: async () => {
+            let result = await knex.select("*").from('harrypotter');
+            return result;
         },
-        CharacterByName: (parent, args) => {
-            const name = args.name;
-            return data.harryPotter.find(character => character.name === name);
+        CharacterByName: async (parent, args) => {
+            let result = await knex.select("*").from("harrypotter").where({name: args.name});
+            return result[0];
         },
-        CharacterByHouse: (parent, args) => {
-            const house = args.house;
-            return data.harryPotter.filter(character => character.house === house);
+        CharacterByHouse: async (parent, args) => {
+            let result = await knex.select("*").from("harrypotter").where({house: args.house});
+            return result;
         },
     },
     Mutation: {
-        addCharacter: (parent, args) => {
+        addCharacter: async (parent, args) => {
             const { input } = args;
-            data.harryPotter.push(input);
-            return data.harryPotter.find(character => character.name === input.name);
-        },
-        deleteCharacter: (parent, args) => {
-            const name = args.name;
-            data.harryPotter.forEach((character, index) => {
-                if (character.name === name){
-                    data.harryPotter.splice(index, 1);
-                }
+            const result = await knex("harrypotter").insert({
+                id: input.id,
+                name: input.name,
+                gender: input.gender,
+                job: input.job,
+                house: input.house,
+                species: input.species,
+                haircolour: input.haircolour,
             });
-            return data.harryPotter;
+            return result;
         },
-        editCharacter: (parent, args) => {
-            const { name, input } = args;
-            data.harryPotter.forEach(character => {
-                if (character.name === name) {
-                    character.id = input.id;
-                    character.name = input.name;
-                    character.gender = input.gender;
-                    character.job = input.job;
-                    character.house = input.house;
-                    character.species = input.species;
-                    character.haircolour = input.haircolour;
-                }
-            });
-            return data.harryPotter;
+        deleteCharacter: async (parent, args) => {
+            await knex("harrypotter")
+                    .del()
+                    .where({name: args.name});
+            const result = await knex.select("*").from('harrypotter');
+            return result;
+        },
+        editCharacter: async (parent, args) => {
+            knex("harrypotter")
+                .where({ name: args.name })
+                .update({
+                    "id": args.input.id,
+                    "name": args.input.name,
+                    "gender": args.input.gender,
+                    "job": args.input.job,
+                    "house": args.input.house,
+                    "species": args.input.species,
+                    "haircolour": args.input.haircolour,
+                });
+            const result = await knex.select("*").from("harrypotter").where({name: args.name});
+            return result;
         }
     }
 };

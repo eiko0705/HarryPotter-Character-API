@@ -24,7 +24,7 @@ const typeDefs = gql`
         CharacterByHouse(house: String!): [HarryPotter]
     }
     input CharacterInput {
-        id: Int
+        id: Int!
         name: String
         gender: String
         job: String
@@ -35,7 +35,7 @@ const typeDefs = gql`
     type Mutation {
         addCharacter(input: CharacterInput!): HarryPotter
         deleteCharacter(name: String!): [HarryPotter]
-        editCharacter(name: String!, input: CharacterInput!): [HarryPotter]
+        editCharacter(name: String!, input: CharacterInput!): HarryPotter
     }
 `;
 
