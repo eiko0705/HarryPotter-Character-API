@@ -1,14 +1,23 @@
 body {
-  background-color: blanchedalmond;
+  background-image: url(./aditya-vyas-5qUJfO4NU4o-unsplash.jpg);
+  background-size: cover;
   margin: 0 auto;
   text-align: center;
 }
 
 h1 {
-  color: rgb(8, 97, 50);
-  font-size: 2em;
+  color: goldenrod;
+  font-size: 3em;
   padding-top: 100px;
   width: 100%;
   font-family: Georgia;
   text-align: center;
+}
+
+#link_to_github {
+  color: white;
+}
+
+#explanation {
+  color: white;
 }
