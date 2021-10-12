@@ -9,24 +9,77 @@
 <body>
     <h1>Welcome to the Harry Potter API</h1>
     <div id="link_to_github">
-      <p>you can get more infotmation here:</p>
+      <span>you can get more infotmation here:</span>
       <a href="https://github.com/eiko0705/HarryPotter-Character-API">
         Harry Potter API Github repositories
       </a>
     </div>
+
     <div id="explanation">
       <h2>Get all character's profile</h2>
-      <p>aaa</p>
+      <code>
+        query getCharacters {
+          Characters {
+            // any column
+          }
+        }
+      </code>
       <h2>Get a specific character's profile</h2>
-      <p>aaa</p>
+      <code>
+        query getCharacterByName {
+          CharacterByName(name:"character name") {
+           // any column
+          }
+        }
+      </code>
       <h2>Get all character's profile by a specific house</h2>
-      <p>aaa</p>
+      <code>
+        query getCharacterByHouse {
+          CharacterByHouse(house:"house name") {
+          // any column
+          }
+        }
+      </code>
       <h2>Add a new character's profile</h2>
-      <p>aaa</p>
+      <code>
+        mutation addCharacter {
+          addCharacter(input: {
+            id: number
+            name: "character name"
+            gender: "gender"
+            job: "job name"
+            house: "house name"
+            species: "species"
+            haircolour: "colour"
+          }) {
+          // any column
+          }
+        }
+      </code>
       <h2>Delete a specific character's profile</h2>
-      <p>aaa</p>
+      <code>
+        mutation deleteCharacter {
+          deleteCharacter(name: "character name") {
+          // any column
+          }
+        }
+      </code>
       <h2>Edit a specific character's profile</h2>
-      <p>aaa</p>
+      <code>
+        mutation addCharacter {
+          addCharacter(input: {
+            id: number
+            name: "character name"
+            gender: "gender"
+            job: "job name"
+            house: "house name"
+            species: "species"
+            haircolour: "colour"
+          }) {
+          // any column
+          }
+        }
+      </code>
     </div>
 </body>
 </html>
