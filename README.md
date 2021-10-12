@@ -56,7 +56,7 @@ get all characters
 ```
 query getCharacters {
   Characters {
-   any column
+   // any column
   }
 }
 ```
@@ -64,7 +64,7 @@ get a specific character by name
 ```
 query getCharacterByName {
   CharacterByName(name:"character name") {
-    any column
+   // any column
   }
 }
 ```
@@ -72,7 +72,7 @@ get characters by a specific house
 ```
 query getCharacterByHouse {
   CharacterByHouse(house:"house name") {
-    any column
+  // any column
   }
 }
 ```
@@ -90,7 +90,7 @@ mutation addCharacter {
     species: "species"
     haircolour: "colour"
   }) {
-    any column
+  // any column
   }
 }
 ```
@@ -98,7 +98,7 @@ delete a specific character
 ```
 mutation deleteCharacter {
   deleteCharacter(name: "character name") {
-    any column
+  // any column
   }
 }
 ```
@@ -114,7 +114,7 @@ mutation addCharacter {
     species: "species"
     haircolour: "colour"
   }) {
-    any column
+  // any column
   }
 }
 ```
